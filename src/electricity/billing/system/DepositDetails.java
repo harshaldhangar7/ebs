@@ -3,7 +3,6 @@ package electricity.billing.system;
 import java.awt.*;
 import javax.swing.*;
 import java.sql.*;
-import net.proteanit.sql.DbUtils;
 import java.awt.event.*;
 
 public class DepositDetails extends JFrame implements ActionListener{
@@ -65,7 +64,7 @@ public class DepositDetails extends JFrame implements ActionListener{
             Conn c = new Conn();
             ResultSet rs = c.s.executeQuery("select * from bill");
             
-            table.setModel(DbUtils.resultSetToTableModel(rs));
+            table.setModel(TableModelUtil.buildTableModel(rs));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -84,7 +83,6 @@ public class DepositDetails extends JFrame implements ActionListener{
         print.addActionListener(this);
         add(print);
         
-        
         setVisible(true);
     }
     
@@ -95,9 +93,9 @@ public class DepositDetails extends JFrame implements ActionListener{
             try {
                 Conn c = new Conn();
                 ResultSet rs = c.s.executeQuery(query);
-                table.setModel(DbUtils.resultSetToTableModel(rs));
+                table.setModel(TableModelUtil.buildTableModel(rs));
             } catch (Exception e) {
-                
+                e.printStackTrace();
             }
         } else  {
             try {

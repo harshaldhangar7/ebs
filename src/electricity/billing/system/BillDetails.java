@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.sql.*;
 import net.proteanit.sql.DbUtils;
+import net.proteanit.sql.TableModelUtil;
 
 public class BillDetails extends JFrame{
 
@@ -21,17 +22,15 @@ public class BillDetails extends JFrame{
             String query = "select * from bill where meter_no = '"+meter+"'";
             ResultSet rs = c.s.executeQuery(query);
             
-            table.setModel(DbUtils.resultSetToTableModel(rs));
+            table.setModel(TableModelUtil.buildTableModel(rs));
             
         } catch (Exception e) {
             e.printStackTrace();
-                        
         }
         
         JScrollPane sp = new JScrollPane(table);
         sp.setBounds(0, 0, 700, 650);
         add(sp);
-        
         
         setVisible(true);
     }

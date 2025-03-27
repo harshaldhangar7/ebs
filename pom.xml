@@ -22,11 +22,11 @@
             <version>8.0.33</version>
         </dependency>
 
-        <!-- ProteanIT SQL Utils for JTable -->
+        <!-- RS2XML for JTable -->
         <dependency>
-            <groupId>net.proteanit</groupId>
-            <artifactId>sql</artifactId>
-            <version>1.0.0</version>
+            <groupId>com.microsoft.sqlserver</groupId>
+            <artifactId>mssql-jdbc</artifactId>
+            <version>12.4.0.jre8</version>
         </dependency>
     </dependencies>
 
